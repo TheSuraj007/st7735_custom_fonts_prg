@@ -1,0 +1,15 @@
+
+device MAX32666
+
+SelectInterface SWD
+
+Speed auto
+
+erase 
+
+RSetType 0
+r 
+
+g
+
+q

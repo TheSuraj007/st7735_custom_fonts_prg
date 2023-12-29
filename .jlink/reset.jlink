@@ -1,0 +1,11 @@
+
+device MAX32666
+
+SelectInterface SWD
+
+Speed auto
+RSetType 0
+r 
+g
+
+q

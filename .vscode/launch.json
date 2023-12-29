@@ -1,0 +1,196 @@
+{
+    "configurations": [
+        {
+            "name": "GDB (Arm M4)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/${config:program_file}",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "linux": {
+                "miDebuggerPath": "${config:ARM_GCC_path}/bin/arm-none-eabi-gdb",
+                "debugServerPath": "${config:OCD_path}/openocd",
+            },
+            "windows": {
+                "miDebuggerPath": "${config:ARM_GCC_path}/bin/arm-none-eabi-gdb.exe",
+                "debugServerPath": "${config:OCD_path}/openocd.exe",
+            },
+            "osx": {
+                "miDebuggerPath": "${config:ARM_GCC_path}/bin/arm-none-eabi-gdb",
+                "debugServerPath": "${config:OCD_path}/bin/openocd",
+            },
+            "logging": {
+                "exceptions": true,
+                "trace": false,
+                "traceResponse": false,
+                "engineLogging": false
+            },
+            "miDebuggerServerAddress": "localhost:3333",
+            "debugServerArgs": "-s ${config:OCD_path}/scripts -f interface/${config:M4_OCD_interface_file} -f target/${config:M4_OCD_target_file} -c \"init; reset halt\"",
+            "serverStarted": "Info : Listening on port 3333 for gdb connections",
+            "filterStderr": true,
+            "targetArchitecture": "arm",
+            "customLaunchSetupCommands": [
+                {
+                    "text": "-list-features"
+                }
+            ],
+            "setupCommands": [
+                {
+                    "text": "set logging overwrite on"
+                },
+                {
+                    "text": "set logging file debug-arm.log"
+                },
+                {
+                    "text": "set logging on"
+                },
+                {
+                    "text": "cd ${workspaceFolder}"
+                },
+                {
+                    "text": "exec-file build/${config:program_file}"
+                },
+                {
+                    "text": "symbol-file build/${config:symbol_file}"
+                },
+                {
+                    "text": "target remote localhost:3333"
+                },
+                {
+                    "text": "monitor reset halt"
+                },
+                {
+                    "text": "b main"
+                }
+            ]
+        },
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "name": "Debug J-Link",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceFolder}/build/${config:program_file}",
+            "serverpath": "C:\\Program Files\\SEGGER\\JLink\\JLinkGDBServerCL.exe",
+            "servertype": "jlink",
+            "device": "MAX32666",
+            "interface": "swd",
+            "serialNumber": "", //If you have more than one J-Link probe, add the serial number here.
+            // "jlinkscript": "${workspaceRoot}/BSP/SEGGER/K66FN2M0_emPower/Setup/Kinetis_K66_Target.js",
+            // "runToMain": true,
+            "runToEntryPoint": "main",
+            "runToMain": true,
+            "armToolchainPath": "${config:ARM_GCC_path}/bin"
+            // "svdFile": "${workspaceRoot}/SVD/MK66F18.svd"
+        },
+        // {
+        //     "type": "gnu-debugger",
+        //     "request": "launch",
+        //     "name": "Jlink GNU debugger",
+        //     "program": "${workspaceFolder}/build/${config:program_file}",
+        //     "toolchain": "${config:ARM_GCC_path}/bin",
+        //     "client": "arm-none-eabi-gdb",
+        //     "server": "JLinkGDBServer",
+        //     "windows": {
+        //         "server": "C:\\Program Files\\SEGGER\\JLink\\JLinkGDBServerCL.exe",
+        //     },
+        //     "serverArgs": [
+        //         "-device",
+        //         "MAX32666",
+        //         "-if",
+        //         "SWD",
+        //         "-speed",
+        //         "4000"
+        //     ],
+        //     "serverHost": "localhost",
+        //     "serverPort": 2331,
+        //     "customVariables": [
+        //         "port0",
+        //         "port1",
+        //         "port2",
+        //     ],
+        //     "autoRun": false,
+        //     "debugOutput": true,
+        // },
+        {
+            "name": "GDB (RISC-V)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/buildrv/${config:program_file}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "linux": {
+                "miDebuggerPath": "${config:xPack_GCC_path}/bin/riscv-none-embed-gdb",
+                "debugServerPath": "${config:OCD_path}/openocd",
+            },
+            "windows": {
+                "miDebuggerPath": "${config:xPack_GCC_path}/bin/riscv-none-embed-gdb.exe",
+                "debugServerPath": "${config:OCD_path}/openocd.exe",
+            },
+            "osx": {
+                "miDebuggerPath": "${config:xPack_GCC_path}/bin/riscv-none-embed-gdb",
+                "debugServerPath": "${config:OCD_path}/bin/openocd",
+            },
+            "logging": {
+                "exceptions": true,
+                "trace": false,
+                "traceResponse": false,
+                "engineLogging": false
+            },
+            "miDebuggerServerAddress": "localhost:3334",
+            "debugServerArgs": "-c \"gdb_port 3334\" -s ${config:OCD_path}/scripts -f interface/${config:RV_OCD_interface_file} -f target/${config:RV_OCD_target_file}",
+            "serverStarted": "Info : Listening on port 3334 for gdb connections",
+            "filterStderr": true,
+            "customLaunchSetupCommands": [
+                {
+                    "text": "-list-features"
+                }
+            ],
+            "targetArchitecture": "arm",
+            "setupCommands": [
+                {
+                    "text": "set logging overwrite on"
+                },
+                {
+                    "text": "set logging file debug-riscv.log"
+                },
+                {
+                    "text": "set logging on"
+                },
+                {
+                    "text": "cd ${workspaceFolder}"
+                },
+                {
+                    "text": "set architecture riscv:rv32",
+                    "ignoreFailures": false
+                },
+                {
+                    "text": "exec-file build/${config:program_file}",
+                    "ignoreFailures": false
+                },
+                {
+                    "text": "symbol-file buildrv/${config:symbol_file}",
+                    "ignoreFailures": false
+                },
+                {
+                    "text": "target remote localhost:3334"
+                },
+                {
+                    "text": "b main"
+                },
+                {
+                    "text": "set $pc=Reset_Handler",
+                    "ignoreFailures": false
+                }
+            ]
+        }
+    ]
+}

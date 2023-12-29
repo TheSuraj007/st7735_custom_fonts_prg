@@ -1,0 +1,13 @@
+
+device MAX32666
+
+SelectInterface SWD
+
+Speed auto
+
+loadfile "C:\1_Local_Drive\Maxim_Workspace\st7735_custom_fonts\st7735_custom_fonts_prg\build\st7735_custom_fonts_prg.elf"
+RSetType 0
+r 
+g
+
+q

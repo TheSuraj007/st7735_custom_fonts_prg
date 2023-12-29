@@ -1,0 +1,69 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${default}",
+                "C:/MaximSDK/Libraries/Cordio/ble-profiles/sources/af",
+                "C:/MaximSDK/Libraries/Cordio/ble-profiles/sources/services",
+                "C:/MaximSDK/Libraries/Cordio/ble-profiles/sources/profiles",
+                "C:/MaximSDK/Libraries/Cordio/ble-profiles/sources/profiles/include",
+                "${workspaceFolder}/Source/**/**",
+                "${workspaceFolder}/Source/Bluetooth_Config",
+                "${workspaceFolder}/Source/Display",
+                "${workspaceFolder}/Source/**/*",
+                "C:/MaximSDK/Libraries/PeriphDrivers/Source/DMA",
+                "C:/MaximSDK/**",
+                "${workspaceFolder}/Source/Drivers",
+                "${workspaceFolder}/Source/**",
+                "${workspaceFolder}/Source/Audio_Filters",
+                "C:/MaximSDK/Libraries/Cordio/ble-host/sources/stack/att",
+                "C:/MaximSDK/Libraries/Cordio/ble-profiles/sources/profiles/hrps"
+            ],
+            "defines": [
+                "${default}"
+            ],
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "${config:ARM_GCC_path}/bin/arm-none-eabi-gcc.exe",
+            "browse": {
+                "path": [
+                    "${default}"
+                ]
+            },
+            "configurationProvider": "ms-vscode.makefile-tools"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${default}"
+            ],
+            "defines": [
+                "${default}"
+            ],
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "${config:ARM_GCC_path}/bin/arm-none-eabi-gcc",
+            "browse": {
+                "path": [
+                    "${default}"
+                ]
+            }
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${default}"
+            ],
+            "defines": [
+                "${default}"
+            ],
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "${config:ARM_GCC_path}/bin/arm-none-eabi-gcc",
+            "browse": {
+                "path": [
+                    "${default}"
+                ]
+            }
+        }
+    ],
+    "version": 4
+}
